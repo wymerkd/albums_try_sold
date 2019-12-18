@@ -1,0 +1,27 @@
+<h1>All Sales Vinyl</h1>
+
+<h3>Available Records</h3>
+
+<% if @albums.any? %>
+  <ul>
+    <% @albums.each do |album| %>
+      <li><a href="/albums/<%= album.id %>/edit"> <%= album.name %></a></li>
+
+    <% end %>
+  </ul>
+<% else %>
+  <p>There are currently no records to display.</p>
+<% end %>
+<div class="form-check">
+  <input class="form-check-input" type="checkbox" name="album_sold" id="defaultCheck1" checked_value= "1" unchecked_value = "0">
+  <label class="form-check-label" for="defaultCheck1">PURCHASED</label>
+</div>
+<a href="/albums/new">Add a new album</a>
+
+<form action="/albums">
+  <div class="form-group">
+    <label for="search">Search</label>
+    <input id="search" name="search" class="form-control" type="text">
+  </div>
+  <button type="submit" class="btn">Go!</button>
+</form>
